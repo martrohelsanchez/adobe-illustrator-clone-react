@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 
 function useHand(scroll) {
     const [position, setPostition] = useState({
-        addScrollLeft: 0,
-        addScrollTop: 0,
+        displacedX: 0,
+        displacedY: 0,
 
         initialScrollLeft: 4500,
         initialScrollTop: 4920,
@@ -13,8 +13,8 @@ function useHand(scroll) {
     });
 
     useEffect(() => {
-        scroll.current.scrollLeft = position.initialScrollLeft + position.addScrollLeft;
-        scroll.current.scrollTop = position.initialScrollTop + position.addScrollTop;
+        scroll.current.scrollLeft = position.initialScrollLeft - position.displacedX;
+        scroll.current.scrollTop = position.initialScrollTop - position.displacedY;
     });
     
     function onMouseDown(e) {
@@ -23,8 +23,8 @@ function useHand(scroll) {
         e.preventDefault();
 
         setPostition({
-            addScrollLeft: 0,
-            addScrollTop: 0,
+            displacedX: 0,
+            displacedY: 0,
 
             initialScrollLeft: scroll.current.scrollLeft,
             initialScrollTop: scroll.current.scrollTop,
@@ -37,8 +37,8 @@ function useHand(scroll) {
     function onMouseMove(e) {
         setPostition(prev => {
             return {
-                addScrollLeft: e.clientX - prev.initialClientX,
-                addScrollTop: e.clientY - prev.initialClientY,
+                displacedX: e.clientX - prev.initialClientX,
+                displacedY: e.clientY - prev.initialClientY,
 
                 initialScrollLeft: prev.initialScrollLeft,
                 initialScrollTop: prev.initialScrollTop,
