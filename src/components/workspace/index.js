@@ -5,10 +5,10 @@ import useHand from "../../customHooks/useHand";
 
 function Workspace() {
     const scroll = useRef(null);
-    const [position, onMouseDown] = useHand(scroll);
+    const [position, grabDown] = useHand(scroll);
 
     function handleMouseDown(e) {
-        onMouseDown(e)
+        grabDown(e)
     }
     
     return (

@@ -6,6 +6,8 @@ import "./globalStyles.css"
 
 
 function App() {
+    const [currentTool, setCurrentTool] = useState("selection");
+
     return (
         <div className="container">
             <Toolbar />
