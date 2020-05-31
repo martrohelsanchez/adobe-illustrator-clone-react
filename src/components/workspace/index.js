@@ -3,12 +3,14 @@ import styles from "./workspace.module.css";
 import DrawingArea from "./components/DrawingArea";
 import useHand from "../../customHooks/useHand";
 
-function Workspace() {
+function Workspace({currentTool}) {
     const scroll = useRef(null);
     const [position, grabDown] = useHand(scroll);
 
     function handleMouseDown(e) {
-        grabDown(e)
+        if (currentTool === "hand") {
+            grabDown(e)
+        }
     }
     
     return (

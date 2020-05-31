@@ -6,18 +6,17 @@ import selectionImg from "../../images/selection.svg"
 import handImg from "../../images/hand.svg"
 import rectangleImg from "../../images/rectangle.svg"
 
-function Toolbar() {
-    const [currentTool, setCurrentTool] = useState("selection");
+function Toolbar({currentTool, setCurrentTool}) {
 
-    function switchTool(newTool) {
-        setCurrentTool(newTool)
-    }
+    // function switchTool(newTool) {
+    //     props.switchTool(newTool);
+    // }
 
     return (
         <div className={styles.toolbar}>
-            <ToolIcon img={selectionImg} switchTool={switchTool} currentTool={currentTool} toolName="selection"/>
-            <ToolIcon img={rectangleImg} switchTool={switchTool} currentTool={currentTool} toolName="rectangle"/>
-            <ToolIcon img={handImg} switchTool={switchTool} currentTool={currentTool} toolName="hand"/>
+            <ToolIcon img={selectionImg} setCurrentTool={setCurrentTool} currentTool={currentTool} toolName="selection"/>
+            <ToolIcon img={rectangleImg} setCurrentTool={setCurrentTool} currentTool={currentTool} toolName="rectangle"/>
+            <ToolIcon img={handImg} setCurrentTool={setCurrentTool} currentTool={currentTool} toolName="hand"/>
         </div>
     )
 }
