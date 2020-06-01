@@ -10,6 +10,8 @@ function useHand(scroll) {
 
         initialClientX: 0,
         initialClientY: 0,
+
+        isGrabbing: false
     });
 
     useEffect(() => {
@@ -31,6 +33,8 @@ function useHand(scroll) {
 
             initialClientX: e.clientX,
             initialClientY: e.clientY,
+
+            isGrabbing: true
         })
     }
 
@@ -45,6 +49,8 @@ function useHand(scroll) {
 
                 initialClientX: prev.initialClientX,
                 initialClientY: prev.initialClientY,
+
+                isGrabbing: true
             }
         })
     }
@@ -52,6 +58,21 @@ function useHand(scroll) {
     function onMouseUp(e) {
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("mouseup", onMouseUp);
+
+        setPostition(prev => {
+            return {
+                displacedX: prev.displacedX,
+                displacedY: prev.displacedY,
+
+                initialScrollLeft: prev.initialScrollLeft,
+                initialScrollTop: prev.initialScrollTop,
+
+                initialClientX: prev.initialClientX,
+                initialClientY: prev.initialClientY,
+
+                isGrabbing: false
+            }
+        })
     }
 
     return [position, onMouseDown];

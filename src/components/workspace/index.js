@@ -6,6 +6,18 @@ import useHand from "../../customHooks/useHand";
 function Workspace({currentTool}) {
     const scroll = useRef(null);
     const [position, grabDown] = useHand(scroll);
+    let cursor;
+    
+    switch (currentTool) {
+        case "hand":
+            cursor = position.isGrabbing ? "grabbing" : "grab";
+            break;
+        case "rectangle":
+            cursor = "crosshair";
+            break;
+        default:
+            cursor = "default";
+    }
 
     function handleMouseDown(e) {
         if (currentTool === "hand") {
@@ -14,7 +26,7 @@ function Workspace({currentTool}) {
     }
     
     return (
-        <div className={styles.workspace}>
+        <div style={{cursor: cursor}} className={styles.workspace}>
             <div onMouseDown={handleMouseDown} ref={scroll} className={styles.scroll} >
                 <DrawingArea />
                 <div className={styles.scrolling} ></div>
