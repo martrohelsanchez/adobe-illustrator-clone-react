@@ -8,6 +8,7 @@ function Workspace({currentTool}) {
     const [position, grabDown] = useHand(scroll);
     let cursor;
     
+    //set the cursor
     switch (currentTool) {
         case "hand":
             cursor = position.isGrabbing ? "grabbing" : "grab";
@@ -20,8 +21,13 @@ function Workspace({currentTool}) {
     }
 
     function handleMouseDown(e) {
-        if (currentTool === "hand") {
-            grabDown(e)
+        switch (currentTool) {
+            case "hand":
+                grabDown(e)
+                break;
+            case "rectangle":
+                console.log("rectangle");
+                break;
         }
     }
     
