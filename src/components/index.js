@@ -1,7 +1,7 @@
 import React, { useState } from "react"
-import Toolbar from "./toolbar"
-import Workspace from "./workspace"
-import Panel from "./panels/Panel"
+import Toolbar from "./toolbar/ToolBar"
+import Workspace from "./workspace/WorkSpace"
+import Panel from "./panel/Panel"
 import "./globalStyles.css"
 
 
