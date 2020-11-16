@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "../toolbar.module.css";
+import * as S from './ToolIcon.styles';
 
 function ToolIcon({ img, currentTool, setCurrentTool, toolName}) {
     const clicked = currentTool === toolName;
@@ -13,9 +13,9 @@ function ToolIcon({ img, currentTool, setCurrentTool, toolName}) {
     }
 
     return (
-        <div style={{backgroundColor: bgColor}} onClick={handleClick} className={styles.toolContainer}>
-            <img className={styles.toolIcon} src={img} alt="tool" />
-        </div>
+        <S.ToolCont style={{backgroundColor: bgColor}} onClick={handleClick}>
+            <S.ToolIcon src={img} alt="tool" />
+        </S.ToolCont>
     )
 }
 
