@@ -5,3 +5,4 @@ This is one of the first projects that I created using React.js
 Technologies used: 
 * React
 * Javascript
+* Styled-components
